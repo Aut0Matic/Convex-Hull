@@ -43,7 +43,7 @@ class GrayscaleBlock(SampleBase):
                 
                 print(i)
                 
-                points[i] = ((x, y))
+                points.append((x,y))
             
             line(points[0], points[1], 0, 0, 255, 2)
             
