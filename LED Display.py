@@ -81,7 +81,7 @@ class visualHull(SampleBase):
                 points.append((Px,Py))
             
             # Colouring Points dim White
-            draw_list(points, 180, 180, 180, 1)
+            draw_list(points, 10, 10, 10, 1)
             
             # Determining the bottom point and colouring it green
             bottom_point = bottom(points)
@@ -90,7 +90,7 @@ class visualHull(SampleBase):
             # Sorting all points by anticlockwise angle relative to the bottom point
             points = sorted(points, key=lambda p: (math.atan2(p[1]-bottom_point[1], p[0]-bottom_point[0])))
             
-            draw_list(points, 255, 255, 255, 0.25)
+            draw_list(points, 255, 255, 255, 1)
             self.matrix.SetPixel(bottom_point[0], bottom_point[1], 38, 255, 0) 
             
             # Defining the stack
@@ -128,16 +128,21 @@ class visualHull(SampleBase):
                             
                             stack.append(temp) # Replacing End
                             
+                            # Painting Black.
                             line(stack[-2], not_in_hull[-1], 0, 0, 0, 0.001)
                             line(not_in_hull[-1], stack[-1], 0, 0, 0, 0.001)
                             
+                            # Rejoining line segment.
                             draw_list(not_in_hull, 255, 0, 0, 0.001)
                             line(stack[-2], stack[-1], 38, 255, 0, 0.25)
+
+                            for i in range(len(stack)-1):
+                                line(stack[i], stack[i+1], 38, 255, 0, 0.00001)
                     except:
                         print("funky error")
             line(points[-1], points[0], 38, 255, 0, 0.25)
                 
-            time.sleep(0.25)
+            time.sleep(1)
 # Main function
 if __name__ == "__main__":
     visual_hull = visualHull()
