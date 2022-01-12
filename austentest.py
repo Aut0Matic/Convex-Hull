@@ -2,7 +2,7 @@
 from samplebase import SampleBase
 import time
 import random
-
+import math
 
 class GrayscaleBlock(SampleBase):
     def __init__(self, *args, **kwargs):
@@ -12,29 +12,38 @@ class GrayscaleBlock(SampleBase):
         width = self.matrix.width
         height = self.matrix.height
 
+        def line(a,b,colour,time):
+            # Draw a line between two points, a and b.
+            
+            # Basic Trig
+            distance = int(math.sqrt( (b[0]-a[0])**2 + (b[1]-a[1])**2 ))
+            
+            for i in range(1,distance):
+                Px = a[0] + (b[0]-a[0])*(i/distance)
+                Py = a[1] + 1
+            
+            
+
         while True:
-            x = random.randrange(1,width)
-            y = random.randrange(1,height)
-            r = random.randrange(1,100)
-            g = random.randrange(1,100)
-            b = random.randrange(1,100)
+            
+            self.matrix.setpixel(0,0,255,255,0)
+            self.matrix.setpixel(width, height, 0,0,100)
+            
+            
+            
+            """ for i in range(1,2):
+                points = []
+                
+                Px = random.randrange(1,width)
+                Py = random.randrange(1,height)
 
-            self.matrix.SetPixel(x, y, r, g, b)
+                points.appedn((Px, Py))
+                
+                self.matrix.setPixel(Px, Py, 255,255,255)
+                time.sleep(1)
+ """
 
-            '''for y in range(0, height):
-                for x in range(0, width):
-                    c = sub_blocks * int(y / y_step) + int(x / x_step)
-                    if count % 4 == 0:
-                        self.matrix.SetPixel(x, y, c, c, c)
-                    elif count % 4 == 1:
-                        self.matrix.SetPixel(x, y, c, 0, 0)
-                    elif count % 4 == 2:
-                        self.matrix.SetPixel(x, y, 0, c, 0)
-                    elif count % 4 == 3:
-                        self.matrix.SetPixel(x, y, 0, 0, c)
-'''
-
-
+            
 # Main function
 if __name__ == "__main__":
     grayscale_block = GrayscaleBlock()
