@@ -21,7 +21,7 @@ class GrayscaleBlock(SampleBase):
             # Basic Trig
             distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
             
-            for i in range(2,distance):
+            for i in range(1,distance):
                 Px = a[0] + (x_distance)*(i/distance)
                 Py = a[1] + (y_distance)*(i/distance)
 
