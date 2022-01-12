@@ -140,8 +140,10 @@ class visualHull(SampleBase):
                         # This is used to paint red
                         not_in_hull.append(stack[-2])
                         
-                        line(stack[-3], stack[-2], 255, 0, 0, 0.125)
-                        line(stack[-2], stack[-1], 255, 0, 0, 0.125)
+                        line(stack[-3], stack[-2], 255, 0, 0, 0.001)
+                        line(stack[-2], stack[-1], 255, 0, 0, 0.001)
+                        
+                        time.sleep(0.2) 
                         
                         temp = stack[-1] # Grabbing the end
                         
