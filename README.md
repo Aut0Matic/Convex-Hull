@@ -6,7 +6,7 @@ Given a set of points in space, the Convex Hull problem aims to find the smalles
 
 In this solution, I have used the Graham Scan algorithm (https://en.wikipedia.org/wiki/Graham_scan) which starts from an extrema point in any direction and works around the set, determining if the proposed hull turns in a concave direction.
 
-[GrahamScanDemo](https://user-images.githubusercontent.com/82569441/149131849-736cd10f-92bb-4c76-9edf-1bbaa312e596.gif)
+![GrahamScanDemo](https://user-images.githubusercontent.com/82569441/149131849-736cd10f-92bb-4c76-9edf-1bbaa312e596.gif)
 
 # Files
 ## convex hull.py
