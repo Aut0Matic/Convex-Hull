@@ -26,7 +26,7 @@ class GrayscaleBlock(SampleBase):
                 Py = a[1] + (y_distance)*(i/distance)
 
                 self.matrix.SetPixel(Px, Py, R, G, B)
-                time.sleep(duration/(1/distance))
+                time.sleep(0.1)
             
             
 
@@ -43,7 +43,8 @@ class GrayscaleBlock(SampleBase):
                 
                 points[i]=((x,y))
             
-            line(points[0], points[1], 0, 0, 255, 2)
+            line(points[0], points[1], 0, 0, 255, 1)
+            
             
             self.matrix.Fill(0,0,0)            
             
