@@ -12,7 +12,7 @@ class GrayscaleBlock(SampleBase):
         width = self.matrix.width
         height = self.matrix.height
 
-        def line(a,b,R,G,B,time):
+        def line(a,b,R,G,B,duration):
             # Draw a line between two points, a and b.
             
             x_distance = b[0]-a[0]
@@ -26,7 +26,7 @@ class GrayscaleBlock(SampleBase):
                 Py = a[1] + (y_distance)*(i/distance)
 
                 self.matrix.SetPixel(Px, Py, R, G, B)
-                time.sleep(time/(1/distance))
+                time.sleep(duration/(1/distance))
             
             
 
