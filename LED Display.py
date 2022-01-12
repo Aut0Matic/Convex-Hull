@@ -71,7 +71,9 @@ class visualHull(SampleBase):
             
             # Generating Points
             points = []
-            no_of_points = random.randrange(5, 10)
+            no_of_points = random.randrange(5, 200)
+
+            tm = 1/no_of_points
             
             for i in range(no_of_points):
                 Px = random.randrange(1,width)
@@ -79,11 +81,7 @@ class visualHull(SampleBase):
                 
                 # Note: this is appending a tuple.
                 points.append((Px,Py))
-            
-            points = [(72, 11), (113, 14), (122, 21), (124, 255), (85, 23), (64, 25), (30, 26)]
-            no_of_points = 7
-            print(width)
-            print(height)
+
             # Colouring Points dim White
             draw_list(points, 10, 10, 10, 1)
             
@@ -107,7 +105,7 @@ class visualHull(SampleBase):
                 draw_list(stack, 38, 255, 0, 0.001)
                
                 if len(stack)>1:
-                    line(stack[-2], stack[-1], 38, 255, 0, 0.25)
+                    line(stack[-2], stack[-1], 38, 255, 0, tm)
                 
                 draw_list(stack, 38, 255, 0, 0.001)
                    
@@ -115,15 +113,13 @@ class visualHull(SampleBase):
                    
                     # While the final 3 line segment turns right, remove the middle segment.
                     try: 
-                        while turn(stack[-3], stack[-2], stack[-1])>=0:
+                        while len(stack)>2 and turn(stack[-3], stack[-2], stack[-1])>=0:
                             
                             # This is used to paint red
                             not_in_hull.append(stack[-2])
                             
-                            line(stack[-3], stack[-2], 255, 0, 0, 0.001)
-                            line(stack[-2], stack[-1], 255, 0, 0, 0.001)
-                            
-                            time.sleep(0.2) 
+                            line(stack[-3], stack[-2], 255, 0, 0, tm/2)
+                            line(stack[-2], stack[-1], 255, 0, 0, tm/2)
                             
                             temp = stack[-1] # Grabbing the end
                             
@@ -138,19 +134,18 @@ class visualHull(SampleBase):
                             
                             # Rejoining line segment.
                             draw_list(not_in_hull, 255, 0, 0, 0.001)
-                            line(stack[-2], stack[-1], 38, 255, 0, 0.25)
+                            line(stack[-2], stack[-1], 38, 255, 0, tm)
 
                             for i in range(len(stack)-1):
                                 line(stack[i], stack[i+1], 38, 255, 0, 0.00001)
                     except:
-                        print("funky error")
-            line(points[-1], points[0], 38, 255, 0, 0.25)
+                        print("Generated two of the same point!")
+            line(points[-1], points[0], 38, 255, 0, tm)
                 
             time.sleep(1)
             
-            print(points)
-            print(stack)
-            print(not_in_hull)
+            # Debugging
+            # print(points)
 
 # Main function
 if __name__ == "__main__":
