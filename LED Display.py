@@ -128,7 +128,7 @@ class visualHull(SampleBase):
                 draw_list(stack, 38, 255, 0, 0.001)
                
                 if len(stack)>1:
-                    line(stack[-2], stack[-1], 0, 0, 255, 0.25)
+                    line(stack[-2], stack[-1], 38, 255, 0, 0.25)
                 
                 draw_list(stack, 38, 255, 0, 0.001)
                    
@@ -153,6 +153,7 @@ class visualHull(SampleBase):
                         line(stack[-2], not_in_hull[-1], 0, 0, 0, 0.001)
                         line(not_in_hull[-1], stack[-1], 0, 0, 0, 0.001)
                         
+                        draw_list(not_in_hull, 255, 0, 0, 0.001)
                         line(stack[-2], stack[-1], 38, 255, 0, 0.25)
 # Main function
 if __name__ == "__main__":
