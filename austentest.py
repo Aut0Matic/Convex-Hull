@@ -12,22 +12,41 @@ class GrayscaleBlock(SampleBase):
         width = self.matrix.width
         height = self.matrix.height
 
-        def line(a,b,colour,time):
+        def line(a,b,R,G,B,time):
             # Draw a line between two points, a and b.
             
-            # Basic Trig
-            distance = int(math.sqrt( (b[0]-a[0])**2 + (b[1]-a[1])**2 ))
+            x_distance = b[0]-a[0]
+            y_distance = b[1]-a[1]
             
-            for i in range(1,distance):
-                Px = a[0] + (b[0]-a[0])*(i/distance)
-                Py = a[1] + 1
+            # Basic Trig
+            distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
+            
+            for i in range(2,distance):
+                Px = a[0] + (x_distance)*(i/distance)
+                Py = a[1] + (y_distance)*(i/distance)
+
+                self.matrix.SetPixel(Px, Py, R, G, B)
+                time.sleep(time/(1/distance))
             
             
 
         while True:
+                        
+            for i in range(0,1):
+
+                points = []
+                
+                x = random.randrange(0,width-1)
+                y = random.randrange(0,height-1)
+
+                self.matrix.SetPixel(x, y, 255, 255, 255)
+                
+
+                points[i] = ((x, y))
             
-            self.matrix.SetPixel(1,1,255,255,0)
-            self.matrix.SetPixel(width-1, height-1, 100,100,100)
+            line(points[0], points[1], 0, 0, 255, 2)
+            
+            self.matrix.Fill(0,0,0)            
             
             
             
