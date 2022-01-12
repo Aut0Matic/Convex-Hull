@@ -41,7 +41,8 @@ class GrayscaleBlock(SampleBase):
 
                 self.matrix.SetPixel(x, y, 255, 255, 255)
                 
-
+                print(i)
+                
                 points[i] = ((x, y))
             
             line(points[0], points[1], 0, 0, 255, 2)
