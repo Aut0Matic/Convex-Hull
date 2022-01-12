@@ -32,7 +32,7 @@ class GrayscaleBlock(SampleBase):
 
         while True:
                         
-            for i in range(0,1):
+            for i in range(0,2):
 
                 points = []
                 
