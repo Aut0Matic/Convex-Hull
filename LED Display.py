@@ -6,6 +6,7 @@ from samplebase import SampleBase
 # Imports
 import random
 import math
+import time
 
 # Defining points:
 
@@ -16,6 +17,9 @@ class visualHull(SampleBase):
     def run(self):
         width = self.matrix.width
         height = self.matrix.height
+        
+        def wait(multiplier):
+            time.sleep(0.5/multiplier)
         
         while True:
             # Clearing the matrix
@@ -29,10 +33,13 @@ class visualHull(SampleBase):
                 Px = random.randrange(1,width)
                 Py = random.randrange(1,height)
                 
-                points.append(Px,Py)
+                # Note: this is appending a tuple.
+                points.append((Px,Py))
                 
                 # Set the point pixel to white.
                 self.matrix.SetPixel(Px,Py,255,255,255)
+
+                wait(no_of_points)
                 
 # Main function
 if __name__ == "__main__":
