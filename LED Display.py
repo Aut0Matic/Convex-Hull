@@ -1,11 +1,51 @@
-# A solution to the Convex Hull problem
+# A visual representation of the convex hull problem displayed on LED matricies
 
+# Driver file
+from samplebase import SampleBase
+
+# Imports
 import random
 import math
 
 # Defining points:
 
-points = []
+class visualHull(SampleBase):
+    def __init__(self, *args, **kwargs):
+        super(visualHull, self).__init__(*args, **kwargs)
+
+    def run(self):
+        width = self.matrix.width
+        height = self.matrix.height
+        
+        while True:
+            # Clearing the matrix
+            self.matrix.Fill(0,0,0)
+            
+            points = []
+            
+            no_of_points = random.randrange(5, 50)
+            
+            for i in range(no_of_points):
+                Px = random.randrange(1,width)
+                Py = random.randrange(1,height)
+                
+                points.append(Px,Py)
+                
+                # Set the point pixel to white.
+                self.matrix.SetPixel(Px,Py,255,255,255)
+                
+# Main function
+if __name__ == "__main__":
+    visual_hull = visualHull()
+    if (not visual_hull.process()):
+        visual_hull.print_help()
+
+
+
+
+
+
+""" points = []
 
 for i in range(1,50):
     Px = random.randrange(-25,25)
@@ -62,3 +102,4 @@ for i in points:
 print("All points: ", points)
 
 print("Hull points: ", stack)
+ """
