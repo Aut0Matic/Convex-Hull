@@ -157,6 +157,9 @@ class visualHull(SampleBase):
                         
                         draw_list(not_in_hull, 255, 0, 0, 0.001)
                         line(stack[-2], stack[-1], 38, 255, 0, 0.25)
+                line(points[-1], points[1], 38, 255, 0, 0.25)
+                
+                time.sleep(0.25)
 # Main function
 if __name__ == "__main__":
     visual_hull = visualHull()
