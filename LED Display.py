@@ -20,6 +20,22 @@ class visualHull(SampleBase):
         
         def wait(multiplier):
             time.sleep(0.5/multiplier)
+            
+        def line(a,b,R,G,B,duration):
+            # Draw a line between two points, a and b.
+            
+            x_distance = b[0]-a[0]
+            y_distance = b[1]-a[1]
+            
+            # Basic Trig
+            distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
+            
+            for i in range(1,distance):
+                Px = a[0] + (x_distance)*(i/distance)
+                Py = a[1] + (y_distance)*(i/distance)
+
+                self.matrix.SetPixel(Px, Py, R, G, B)
+                time.sleep(duration/distance)
         
         while True:
             # Clearing the matrix
@@ -39,7 +55,9 @@ class visualHull(SampleBase):
                 # Set the point pixel to white.
                 self.matrix.SetPixel(Px,Py,255,255,255)
 
-                wait(no_of_points)
+                wait(0.5/no_of_points)
+                
+            print(points)
                 
 # Main function
 if __name__ == "__main__":
