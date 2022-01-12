@@ -17,10 +17,10 @@ class visualHull(SampleBase):
     def run(self):
         width = self.matrix.width
         height = self.matrix.height
+       
+        #! Function definitions for drawing
         
-        def wait(multiplier):
-            time.sleep(0.5/multiplier)
-            
+        #? Line Function
         def line(a,b,R,G,B,duration):
             # Draw a line between two points, a and b.
             
@@ -37,11 +37,59 @@ class visualHull(SampleBase):
                 self.matrix.SetPixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
         
+        #? Point Array Function
         def draw_list(array, R, G, B, duration):
+            # Set an array of pixels to a specified colour over a time interval.
             for i in array:
                 self.matrix.SetPixel(i[0], i[1], R, G, B)
                 time.sleep(duration/len(array))
+                
+        #! Function definitions for convex hull
         
+        #? Lowest Point Function
+        def bottom(points):
+            minimum = (11, 11)
+            for i in points:
+                if i[1]<minimum[1]:
+                    minimum = i
+            return minimum
+
+        #? Turn Direction Function
+        def turn(p1, p2, p3):
+            # = 0: collinear
+            # >0: left turn
+            # <0: right turn
+            value = (p1[0]-p2[0])*(p3[1]-p2[1])-(p1[1]-p2[1])*(p3[0]-p2[0])
+            return value
+        """
+        # Determining the bottom point
+
+        bottom_point = bottom(points)
+
+        # Sorting all points by anticlockwise angle relative to the bottom point
+
+        points =sorted(points, key=lambda p: (math.atan2(p[1]-bottom_point[1], p[0]-bottom_point[0])))
+
+        # Defining the stack
+
+        stack = []
+
+        # Iterate through all points, add the next one
+        for i in points:
+            stack.append(i)
+            if len(stack)>2:
+                
+                # While the final 3 line segment turns right, remove the middle segment.
+                
+                while turn(stack[-3], stack[-2], stack[-1])>=0:
+                    
+                    temp = stack[-1] # Grabbing the end
+                    
+                    stack.pop() # Popping end
+                    stack.pop() # Popping middle
+                    
+                    stack.append(temp) # Replacing End             
+        """                 
         while True:
             # Clearing the matrix
             self.matrix.Fill(0,0,0)
@@ -57,9 +105,50 @@ class visualHull(SampleBase):
                 # Note: this is appending a tuple.
                 points.append((Px,Py))
             
-            # Colouring Points White
-            draw_list(points, 255, 255, 255, 1)    
+            # Colouring Points dim White
+            draw_list(points, 180, 180, 180, 1)
+            
+            # Determining the bottom point and colouring it green
+            bottom_point = bottom(points)
+            self.matrix.SetPixel(bottom_point[0], bottom_point[1], 38, 255, 0)
+            
+            # Sorting all points by anticlockwise angle relative to the bottom point
+            points = sorted(points, key=lambda p: (math.atan2(p[1]-bottom_point[1], p[0]-bottom_point[0])))
+            
+            draw_list(points, 255, 255, 255, 0.25)
+            self.matrix.SetPixel(bottom_point[0], bottom_point[1], 38, 255, 0) 
+            
+            # Defining the stack
+            stack = []
+            not_in_hull = []
+            
+            # Iterating through all points, add the next one
+            for i in points:
+                stack.append(i)
+                draw_list(stack, 38, 255, 0, 0.001)
+               
+                if len(stack)>1:
+                    line(stack[-2], stack[-1], 0, 0, 255, 0.25)
                 
+                draw_list(stack, 38, 255, 0, 0.001)
+                   
+                if len(stack)>2:
+                   
+                   # While the final 3 line segment turns right, remove the middle segment. 
+                    while turn(stack[-3], stack[-2], stack[-1])>=0:
+                        
+                        # This is used to paint red
+                        not_in_hull.append(stack[-2])
+                        
+                        line(stack[-3], stack[-2], 255, 0, 0, 0.001)
+                        line(stack[-2], stack[-1], 255, 0, 0, 0.001)
+                        
+                        temp = stack[-1] # Grabbing the end
+                        
+                        stack.pop() # Popping end
+                        stack.pop() # Popping middle
+                        
+                        stack.append(temp) # Replacing End
 # Main function
 if __name__ == "__main__":
     visual_hull = visualHull()
