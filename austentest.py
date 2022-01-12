@@ -31,19 +31,17 @@ class GrayscaleBlock(SampleBase):
             
 
         while True:
+            
+            points = [(0,0), (0,0)]
                         
             for i in range(0,2):
 
-                points = []
-                
                 x = random.randrange(0,width-1)
                 y = random.randrange(0,height-1)
 
                 self.matrix.SetPixel(x, y, 255, 255, 255)
                 
-                print(i)
-                
-                points.append((x,y))
+                points[i]=((x,y))
             
             line(points[0], points[1], 0, 0, 255, 2)
             
