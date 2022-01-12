@@ -55,8 +55,7 @@ class visualHull(SampleBase):
                 # Set the point pixel to white.
                 self.matrix.SetPixel(Px,Py,255,255,255)
                 
-                print("Waiting ", 0.5/no_of_points, " Seconds")
-                #wait(0.5/no_of_points)
+                time.sleep(0.5/no_of_points)
                 
             print(points)
                 
