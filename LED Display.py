@@ -71,7 +71,7 @@ class visualHull(SampleBase):
             
             # Generating Points
             points = []
-            no_of_points = random.randrange(5, 50)
+            no_of_points = random.randrange(5, 10)
             
             for i in range(no_of_points):
                 Px = random.randrange(1,width)
@@ -80,6 +80,10 @@ class visualHull(SampleBase):
                 # Note: this is appending a tuple.
                 points.append((Px,Py))
             
+            points = [(72, 11), (113, 14), (122, 21), (124, 255), (85, 23), (64, 25), (30, 26)]
+            no_of_points = 7
+            print(width)
+            print(height)
             # Colouring Points dim White
             draw_list(points, 10, 10, 10, 1)
             
@@ -143,6 +147,11 @@ class visualHull(SampleBase):
             line(points[-1], points[0], 38, 255, 0, 0.25)
                 
             time.sleep(1)
+            
+            print(points)
+            print(stack)
+            print(not_in_hull)
+
 # Main function
 if __name__ == "__main__":
     visual_hull = visualHull()
