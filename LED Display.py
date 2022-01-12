@@ -149,6 +149,11 @@ class visualHull(SampleBase):
                         stack.pop() # Popping middle
                         
                         stack.append(temp) # Replacing End
+                        
+                        line(stack[-2], not_in_hull[-1], 0, 0, 0, 0.001)
+                        line(not_in_hull[-1], stack[-1], 0, 0, 0, 0.001)
+                        
+                        line(stack[-2], stack[-1], 38, 255, 0, 0.25)
 # Main function
 if __name__ == "__main__":
     visual_hull = visualHull()
