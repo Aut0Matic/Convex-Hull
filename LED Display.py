@@ -56,7 +56,7 @@ class visualHull(SampleBase):
                 self.matrix.SetPixel(Px,Py,255,255,255)
                 
                 print("Waiting ", 0.5/no_of_points, " Seconds")
-                wait(0.5/no_of_points)
+                #wait(0.5/no_of_points)
                 
             print(points)
                 
