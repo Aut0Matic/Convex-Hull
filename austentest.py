@@ -26,8 +26,9 @@ class GrayscaleBlock(SampleBase):
 
         while True:
             
-            self.matrix.SetPixel(0,0,255,255,0)
-            self.matrix.SetPixel(width, height, 0,0,100)
+            self.matrix.SetPixel(1,1,255,255,0)
+            self.matrix.SetPixel(width, height, 100,100,100)
+            
             
             
             
