@@ -37,12 +37,17 @@ class visualHull(SampleBase):
                 self.matrix.SetPixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
         
+        def draw_list(array, R, G, B, duration):
+            for i in array:
+                self.matrix.SetPixel(i[0], i[1], R, G, B)
+                time.sleep(duration/len(array))
+        
         while True:
             # Clearing the matrix
             self.matrix.Fill(0,0,0)
             
+            # Generating Points
             points = []
-            
             no_of_points = random.randrange(5, 50)
             
             for i in range(no_of_points):
@@ -51,13 +56,9 @@ class visualHull(SampleBase):
                 
                 # Note: this is appending a tuple.
                 points.append((Px,Py))
-                
-                # Set the point pixel to white.
-                self.matrix.SetPixel(Px,Py,255,255,255)
-                
-                time.sleep(0.5/no_of_points)
-                
-            print(points)
+            
+            # Colouring Points White
+            draw_list(points, 255, 255, 255, 1)    
                 
 # Main function
 if __name__ == "__main__":
