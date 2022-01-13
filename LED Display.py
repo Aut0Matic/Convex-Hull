@@ -88,6 +88,14 @@ class visualHull(SampleBase):
             # Determining the bottom point and colouring it green
             bottom_point = bottom(points)
             self.matrix.SetPixel(bottom_point[0], bottom_point[1], 38, 255, 0)
+
+            # Drawing lines from the bottom point to each point in the random order.
+            for i in points:
+                line(bottom_point, i, 0, 0, 150, tm)
+            
+            # Re clearing and colouring points dim white
+            self.matrix.Fill(0,0,0)
+            draw_list(points, 10, 10, 10, 0.00001)
             
             # Sorting all points by anticlockwise angle relative to the bottom point
             points = sorted(points, key=lambda p: (math.atan2(p[1]-bottom_point[1], p[0]-bottom_point[0])))
