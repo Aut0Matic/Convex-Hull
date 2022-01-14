@@ -10,9 +10,9 @@ import time
 
 # Defining points:
 
-class visualHull(SampleBase):
+class LEDdisplay(SampleBase):
     def __init__(self, *args, **kwargs):
-        super(visualHull, self).__init__(*args, **kwargs)
+        super(LEDdisplay, self).__init__(*args, **kwargs)
 
     def run(self):
         width = self.matrix.width
@@ -48,9 +48,9 @@ class visualHull(SampleBase):
         
         #? Lowest Point Function
         def bottom(points):
-            minimum = (11, 11)
+            minimum = (0, 0)
             for i in points:
-                if i[1]<minimum[1]:
+                if i[1]>minimum[1]:
                     minimum = i
             return minimum
 
@@ -157,6 +157,6 @@ class visualHull(SampleBase):
 
 # Main function
 if __name__ == "__main__":
-    visual_hull = visualHull()
-    if (not visual_hull.process()):
-        visual_hull.print_help()
+    led_display = LEDdisplay()
+    if (not led_display.process()):
+        led_display.print_help()
