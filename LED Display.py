@@ -21,6 +21,12 @@ class LEDdisplay(SampleBase):
         #! Function definitions for drawing
         
         #? Line Function
+        def new_pixel(x, y, R, G, B):
+            if x>191:
+                self.matrix.SetPixel(x-192, y+64, R, G, B)
+            else:
+                self.matrix.SetPixel(x, y, R, G, B)
+        
         def line(a,b,R,G,B,duration):
             # Draw a line between two points, a and b.
             
@@ -34,14 +40,14 @@ class LEDdisplay(SampleBase):
                 Px = a[0] + (x_distance)*(i/distance)
                 Py = a[1] + (y_distance)*(i/distance)
 
-                self.matrix.SetPixel(Px, Py, R, G, B)
+                new_pixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
         
         #? Point Array Function
         def draw_list(array, R, G, B, duration):
             # Set an array of pixels to a specified colour over a time interval.
             for i in array:
-                self.matrix.SetPixel(i[0], i[1], R, G, B)
+                new_pixel(i[0], i[1], R, G, B)
                 time.sleep(duration/len(array))
                 
         #! Function definitions for convex hull
@@ -87,7 +93,7 @@ class LEDdisplay(SampleBase):
             
             # Determining the bottom point and colouring it green
             bottom_point = bottom(points)
-            self.matrix.SetPixel(bottom_point[0], bottom_point[1], 38, 255, 0)
+            new_pixel(bottom_point[0], bottom_point[1], 38, 255, 0)
 
             # Drawing lines from the bottom point to each point in the random order.
             for i in points:
@@ -101,7 +107,7 @@ class LEDdisplay(SampleBase):
             points = sorted(points, key=lambda p: (math.atan2(p[1]-bottom_point[1], p[0]-bottom_point[0])))
             
             draw_list(points, 255, 255, 255, 1)
-            self.matrix.SetPixel(bottom_point[0], bottom_point[1], 38, 255, 0) 
+            new_pixel(bottom_point[0], bottom_point[1], 38, 255, 0) 
             
             # Defining the stack
             stack = []
