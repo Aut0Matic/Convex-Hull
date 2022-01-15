@@ -31,8 +31,8 @@ class LEDdisplay(SampleBase):
             distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
             
             for i in range(1,distance*2):
-                Px = a[0] + (x_distance/2)*(i/distance)
-                Py = a[1] + (y_distance/2)*(i/distance)
+                Px = int(a[0] + (x_distance/2)*(i/distance))
+                Py = int(a[1] + (y_distance/2)*(i/distance))
 
                 self.matrix.SetPixel(Px, Py, R, G, B)
                 time.sleep((duration/distance)/no_of_points)
