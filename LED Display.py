@@ -38,12 +38,12 @@ class LEDdisplay(SampleBase):
             # Basic Trig
             distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
             
-            for i in range(1,distance*2):
+            for i in range(0,distance*2):
                 Px = a[0] + (x_distance/2)*(i/distance)
                 Py = a[1] + (y_distance/2)*(i/distance)
 
                 new_pixel(Px, Py, R, G, B)
-                time.sleep((duration/distance)/(8*no_of_points))
+                time.sleep(duration/distance)
         
         #? Point Array Function
         def draw_list(array, R, G, B, duration):
