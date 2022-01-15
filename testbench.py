@@ -30,6 +30,7 @@ class TestBench(SampleBase):
                 Px = a[0] + (x_distance)*(i/distance)
                 Py = a[1] + (y_distance)*(i/distance)
 
+                print("Drawing a pixel at ", Px, Py)
                 new_pixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
             
