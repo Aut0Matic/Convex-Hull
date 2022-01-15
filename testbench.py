@@ -37,8 +37,9 @@ class TestBench(SampleBase):
 
         while True:
 
-            for i in range(0,393):
-                new_pixel(i, 32, 255, 255, 255,)
+            for i in range(0,394):
+                for k in range(0,64):
+                    new_pixel(i, k, 255, 255, 255)
             
             # Do something in here!
 
