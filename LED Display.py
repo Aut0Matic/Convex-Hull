@@ -154,8 +154,8 @@ class LEDdisplay(SampleBase):
 
                             for i in range(len(stack)-1):
                                 line(stack[i], stack[i+1], 38, 255, 0, 0.00001)
-                    except:
-		    	print("null")
+                    except Exception:
+                        pass
 
             line(points[-1], points[0], 38, 255, 0, tm)
                 
