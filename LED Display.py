@@ -41,6 +41,8 @@ class LEDdisplay(SampleBase):
             for i in range(0,distance*2):
                 Px = a[0] + (x_distance/2)*(i/distance)
                 Py = a[1] + (y_distance/2)*(i/distance)
+                if Py == 32:
+                    print("trying to paint a line segment at Py = 32")
 
                 new_pixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
