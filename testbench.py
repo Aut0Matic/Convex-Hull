@@ -27,8 +27,8 @@ class TestBench(SampleBase):
             distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
             
             for i in range(1,distance):
-                Px = a[0] + (x_distance)*(i/distance)
-                Py = a[1] + (y_distance)*(i/distance)
+                Px = int(a[0] + (x_distance)*(i/distance))
+                Py = int(a[1] + (y_distance)*(i/distance))
 
                 print("Drawing a pixel at ", Px, Py)
                 new_pixel(Px, Py, R, G, B)
