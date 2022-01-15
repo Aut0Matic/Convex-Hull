@@ -36,19 +36,17 @@ class TestBench(SampleBase):
                 time.sleep(duration/distance)
         
         #? Function to draw a polygon from its points
-        def draw_polygon(polygon, R, G, B):
+        def draw_polygon(polygon, R, G, B, duration):
             size = len(polygon)
             for i in range(0, size-1):
-                draw_line(polygon[i], polygon[i+1], R, G, B)
-            draw_line(polygon[-1], polygon[0], R, G, B)
+                draw_line(polygon[i], polygon[i+1], R, G, B, duration/size)
+            draw_line(polygon[-1], polygon[0], R, G, B, duration/size)
         
         #! Polygons
         
         #? Square!
-        square = [
-            (162, 30), (222, 30),
-            (162, 60), (222, 60)
-        ]
+        def quad(left_x, top_y, right_x, bottom_y):
+            return [(left_x, ), (126, 9), (126, 51), (62, 51)]
         
         def isinppoly(point, polygon):
             for p in polygon:
@@ -57,7 +55,7 @@ class TestBench(SampleBase):
             
         #! Main Loop
         while True:
-            draw_polygon(square, 255, 255, 255)
+            draw_polygon(square, 255, 255, 255, 1)
                     
             # Do something in here!
 
