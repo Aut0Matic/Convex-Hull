@@ -42,8 +42,6 @@ class LEDdisplay(SampleBase):
                 Px = int(a[0] + (x_distance/2)*(i/distance))
                 Py = int(a[1] + (y_distance/2)*(i/distance))
 
-                print(Py)
-                
                 new_pixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
         
