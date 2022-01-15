@@ -38,12 +38,12 @@ class LEDdisplay(SampleBase):
             # Basic Trig
             distance = int(math.sqrt( (x_distance)**2 + (y_distance)**2 ))
             
-            for i in range(1,distance):
-                Px = a[0] + (x_distance)*(i/distance)
-                Py = a[1] + (y_distance)*(i/distance)
+            for i in range(1,distance*2):
+                Px = a[0] + (x_distance/2)*(i/distance)
+                Py = a[1] + (y_distance/2)*(i/distance)
 
                 new_pixel(Px, Py, R, G, B)
-                time.sleep(duration/distance)
+                time.sleep((duration/distance)/(8*no_of_points))
         
         #? Point Array Function
         def draw_list(array, R, G, B, duration):
@@ -79,7 +79,7 @@ class LEDdisplay(SampleBase):
             
             # Generating Points
             points = []
-            no_of_points = random.randrange(5, 30)
+            no_of_points = random.randrange(5, 200)
 
             tm = 1/no_of_points
             
@@ -155,7 +155,8 @@ class LEDdisplay(SampleBase):
                             for i in range(len(stack)-1):
                                 line(stack[i], stack[i+1], 38, 255, 0, 0.00001)
                     except:
-                        print("Generated two of the same point!")
+		    	print("null")
+
             line(points[-1], points[0], 38, 255, 0, tm)
                 
             time.sleep(1)
