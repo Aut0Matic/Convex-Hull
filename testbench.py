@@ -39,7 +39,7 @@ class TestBench(SampleBase):
 
             for i in range(0,394):
                 for k in range(0,64):
-                    new_pixel(i, k, 255, 255, 255)
+                    new_pixel(i, k, 100, 100, k*2*i)
             
             # Do something in here!
 
