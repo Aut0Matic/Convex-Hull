@@ -11,6 +11,12 @@ class TestBench(SampleBase):
         width = self.matrix.width
         height = self.matrix.height
 
+        def new_pixel(x, y, R, G, B):
+            if y>31:
+                self.matrix.SetPixel(x+192, y-32, R, G, B)
+            else:
+                self.matrix.SetPixel(x, y, R, G, B)
+
         def line(a,b,R,G,B,duration):
             # Draw a line between two points, a and b.
             
@@ -24,12 +30,15 @@ class TestBench(SampleBase):
                 Px = a[0] + (x_distance)*(i/distance)
                 Py = a[1] + (y_distance)*(i/distance)
 
-                self.matrix.SetPixel(Px, Py, R, G, B)
+                new_pixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
             
             
 
         while True:
+
+            for i in range(0,393):
+                new_pixel(i, 32, 1, 1, 1,)
             
             # Do something in here!
 
