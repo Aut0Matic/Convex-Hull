@@ -17,7 +17,7 @@ class TestBench(SampleBase):
             else:
                 self.matrix.SetPixel(x, y, R, G, B)
 
-        def line(a,b,R,G,B,duration):
+        def draw_line(a,b,R,G,B,duration):
             # Draw a line between two points, a and b.
             
             x_distance = b[0]-a[0]
@@ -37,7 +37,7 @@ class TestBench(SampleBase):
 
         while True:
             for i in range(0, 381):
-                line(((192, 0), (i, 63), 255, 255, 255, .5)) 
+                draw_line((192, 0), (i, 63), 255, 255, 255, .5) 
             # Do something in here!
 
             
