@@ -48,9 +48,9 @@ class LEDdisplay(SampleBase):
         
         #? Lowest Point Function
         def bottom(points):
-            minimum = (0, 64)
+            minimum = (0, 64i)
             for i in points:
-                if i[1]>minimum[1]:
+                if i[1]<minimum[1]:
                     minimum = i
             return minimum
 
