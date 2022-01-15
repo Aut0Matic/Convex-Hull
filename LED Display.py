@@ -24,7 +24,7 @@ class LEDdisplay(SampleBase):
         
         def new_pixel(x, y, R, G, B):
             if y>31:
-                self.matrix.SetPixel(x+192, y-32)
+                self.matrix.SetPixel(x+192, y-32, R, G, B)
             else:
                 self.matrix.SetPixel(x, y, R, G, B)
         
