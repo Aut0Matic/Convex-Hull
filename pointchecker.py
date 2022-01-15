@@ -34,13 +34,30 @@ class TestBench(SampleBase):
 
                 new_pixel(Px, Py, R, G, B)
                 time.sleep(duration/distance)
-            
+        
+        #? Function to draw a polygon from its points
+        def draw_polygon(polygon, R, G, B):
+            size = len(polygon)
+            for i in range(0, size-1):
+                draw_line(polygon[i], polygon[i+1], R, G, B)
+            draw_line(polygon[-1], polygon[0], R, G, B)
+        
+        #! Polygons
+        
+        #? Square!
+        square = [
+            (162, 30), (222, 30),
+            (162, 60), (222, 60)
+        ]
+        
+        def isinppoly(point, polygon):
+            for p in polygon:
+                for k in polygon:
+                    print("Placeholder Function")
             
         #! Main Loop
         while True:
-            for i in range(0,394):
-                for k in range(0, 64):
-                    new_pixel(i, k, 255, 255, 255)
+            draw_polygon(square, 255, 255, 255)
                     
             # Do something in here!
 
