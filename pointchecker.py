@@ -54,20 +54,81 @@ class TestBench(SampleBase):
             bottom = random.randrange(height+5, height*2 - 5)
 
             return [(left, top), (right, top), (right, bottom), (left, bottom)]
+       
+        def vectorSort(a, b):
+            # returns the bottom vector, then the top vector
+            if a[1]<=b[1]:
+                return a, b
+            else:
+                return b, a
+            
+        #? Turn Direction Function
+        def turn(p1, p2, p3):
+            # = 0: collinear
+            # >0: left turn
+            # <0: right turn
+            value = (p1[0]-p2[0])*(p3[1]-p2[1])-(p1[1]-p2[1])*(p3[0]-p2[0])
+            
+        def lineCross(a, b, p):
+            if a[0]<=p[0] and p[0]<=b[0]:
+                if turn(a, b, p)>=0:
+                    return True
+            
+            if b[0]<=p[0] and p[0]<=a[0]:
+                if turn(a, b, p)<=0:
+                    return True
+                
+            return False;
+                
+            return True
         
         def isinppoly(point, polygon):
-            for p in polygon:
-                for k in polygon:
-                    print("Placeholder Function")
+            count = 0
+            for i in range(0, len(polygon)-1):
+                bottom, top = vectorSort(polygon[i], polygon[i+1])
+                if lineCross(bottom, top, point):
+                    count = count + 1
+            
+            bottom, top = vectorSort(polygon[i], polygon[i+1])
+            
+            if count%2==0:
+                return False
+            return True
+                
+            
+                
             
         #! Main Loop
         while True:
+            self.matrix.Fill(0,0,0)
             
             new_quad = quad()
             
-            draw_polygon(new_quad, 255, 255, 255, 1)
+            draw_polygon(new_quad, 0, 0, 255, 1)
 
-            self.matrix.Fill(0, 0, 0)
+            #? Generating Points.
+            
+            points = []
+            
+            no_of_points = random.randrange(1,200)
+            
+            for i in range(1,no_of_points):
+                Px = random.randrange(0, width/2)
+                Py = random.randrange(0, height*2)
+                
+                points.append((Px, Py))
+                
+                new_pixel(Px, Py, 255, 255, 255)
+                
+            for i in points:
+                if isinppoly(i, new_quad):
+                    new_pixel(i[0], i[1], 0, 255, 0)
+                else:
+                    new_pixel(i[0], i[1], 255, 0, 0)
+                time.sleep(0.01)
+                
+                
+
                     
             # Do something in here!
 
