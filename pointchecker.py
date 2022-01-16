@@ -68,6 +68,7 @@ class TestBench(SampleBase):
             # >0: left turn
             # <0: right turn
             value = (p1[0]-p2[0])*(p3[1]-p2[1])-(p1[1]-p2[1])*(p3[0]-p2[0])
+            return value
             
         def lineCross(a, b, p):
             if a[0]<=p[0] and p[0]<=b[0]:
