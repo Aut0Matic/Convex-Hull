@@ -64,6 +64,8 @@ class TestBench(SampleBase):
             new_quad = quad(left, top, right, bottom)
             
             draw_polygon(new_quad, 255, 255, 255, 1)
+
+            self.matrix.Fill(0, 0, 0)
                     
             # Do something in here!
 
