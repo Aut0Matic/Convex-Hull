@@ -46,8 +46,14 @@ class TestBench(SampleBase):
         #! Polygons
         
         #? Square!
-        def quad(left_x, top_y, right_x, bottom_y):
-            return [(left_x, top_y), (right_x, top_y), (right_x, bottom_y), (left_x, bottom_y)]
+        def quad():
+            
+            left = random.randrange(10, width/4 - 10)
+            right = random.randrange(width/4 + 10, width/2 - 10)
+            top = random.randrange(5, height-5)
+            bottom = random.randrange(height+5, height*2 - 5)
+
+            return [(left, top), (right, top), (right, bottom), (left, bottom)]
         
         def isinppoly(point, polygon):
             for p in polygon:
@@ -56,12 +62,8 @@ class TestBench(SampleBase):
             
         #! Main Loop
         while True:
-            left = random.randrange(10, 60)
-            right = random.randrange(120, 180)
-            top = random.randrange(10, 25)
-            bottom = random.randrange(45, 64)
             
-            new_quad = quad(left, top, right, bottom)
+            new_quad = quad()
             
             draw_polygon(new_quad, 255, 255, 255, 1)
 
