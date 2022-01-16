@@ -127,6 +127,9 @@ class TestBench(SampleBase):
                 else:
                     new_pixel(i[0], i[1], 255, 0, 0)
                 time.sleep(0.01)
+            
+            
+            time.sleep(1)
                 
                 
 
