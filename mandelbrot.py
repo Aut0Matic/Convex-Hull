@@ -65,6 +65,8 @@ class TestBench(SampleBase):
         #! Main Loop
         while True:
             
+            base_array = np.empty((192, 64), float)
+            
             for x in range(0,192):
                 for y in range(0, 64):
                     base_array[x][y] = np.complex( (300/(x-96)) , (100/(y-64)) )
