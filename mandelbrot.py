@@ -74,15 +74,15 @@ class TestBench(SampleBase):
             
             for var in range(1,10):  
                 print("var = ", var);
-                time.sleep(0.001)
+                time.sleep(0.00001)
                 
                 for i in range(0,192):
                     print("i = ", i)
-                    time.sleep(0.001)
+                    time.sleep(0.00001)
                     
                     for y in range(0, 64):
                         print("y = ", y)
-                        time.sleep(0.001)
+                        time.sleep(0.00001)
                         
                         z = base_array[i][y]
 
@@ -90,7 +90,7 @@ class TestBench(SampleBase):
                         
                         sc = int(255 * (var/10))
                         
-                        new_pixel(i, y, sc, sc, sc)
+                        new_pixel(i, y, 10, 10, sc)
 
                         
                     
