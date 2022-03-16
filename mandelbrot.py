@@ -65,7 +65,7 @@ class TestBench(SampleBase):
         #! Main Loop
         while True:
             
-            base_array = np.empty((192, 64), float)
+            base_array = np.empty((192, 64), complex)
             
             for x in range(0,192):
                 for y in range(0, 64):
