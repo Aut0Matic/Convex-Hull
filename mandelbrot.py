@@ -74,15 +74,15 @@ class TestBench(SampleBase):
             
             for var in range(1,10):  
                 print("var = ", var);
-                time.sleep(0.1)
+                time.sleep(0.001)
                 
                 for i in range(0,192):
                     print("i = ", i)
-                    time.sleep(0.1)
+                    time.sleep(0.001)
                     
                     for y in range(0, 64):
                         print("y = ", y)
-                        time.sleep(0.1)
+                        time.sleep(0.001)
                         
                         z = base_array[i][y]
 
