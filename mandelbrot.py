@@ -88,7 +88,7 @@ class TestBench(SampleBase):
 
                         result = escape(z, var)
                         
-                        sc = int(255 * (var/10))
+                        sc = int(255 * (result/var))
                         
                         new_pixel(i, y, 10, 10, sc)
 
