@@ -63,9 +63,9 @@ class TestBench(SampleBase):
 
         base_array = np.empty((192, 64), complex)
             
-            for x in range(0,192):
-                for y in range(0, 64):
-                    base_array[x][y] = np.complex( (300.01/(x-96.01)) , (100.01/(y-64.01)) )
+        for x in range(0,192):
+            for y in range(0, 64):
+                base_array[x][y] = np.complex( (300.01/(x-96.01)) , (100.01/(y-64.01)) )
                     
         print("SETUP COMPLETE!")
 
