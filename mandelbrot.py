@@ -2,6 +2,8 @@
 from samplebase import SampleBase
 import time
 import math
+import random
+import numpy
 
 class TestBench(SampleBase):
     def __init__(self, *args, **kwargs):
