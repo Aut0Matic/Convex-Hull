@@ -3,7 +3,7 @@ from samplebase import SampleBase
 import time
 import math
 import random
-import numpy
+import numpy as np
 
 class TestBench(SampleBase):
     def __init__(self, *args, **kwargs):
