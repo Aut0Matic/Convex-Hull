@@ -61,23 +61,35 @@ class TestBench(SampleBase):
                 
             return iterations
 
-
-        #! Main Loop
-        while True:
-            
-            base_array = np.empty((192, 64), complex)
+        base_array = np.empty((192, 64), complex)
             
             for x in range(0,192):
                 for y in range(0, 64):
                     base_array[x][y] = np.complex( (300.01/(x-96.01)) , (100.01/(y-64.01)) )
+                    
+        print("SETUP COMPLETE!")
+
+        #! Main Loop
+        while True:
             
             for var in range(1,10):  
+                print("var = ", var);
+                time.sleep(0.1)
+                
                 for i in range(0,192):
+                    print("i = ", i)
+                    time.sleep(0.1)
+                    
                     for y in range(0, 64):
+                        print("y = ", y)
+                        time.sleep(0.1)
+                        
                         z = base_array[i][y]
 
                         result = escape(z, var)
-                        sc = 255 * (var/10)
+                        
+                        sc = int(255 * (var/10))
+                        
                         new_pixel(i, y, sc, sc, sc)
 
                         
