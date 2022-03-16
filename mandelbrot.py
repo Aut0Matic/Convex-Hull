@@ -69,7 +69,7 @@ class TestBench(SampleBase):
             
             for x in range(0,192):
                 for y in range(0, 64):
-                    base_array[x][y] = np.complex( (300.01/(x-96)) , (100.01/(y-64)) )
+                    base_array[x][y] = np.complex( (300.01/(x-96.01)) , (100.01/(y-64.01)) )
             
             for var in range(1,10):  
                 for i in range(0,192):
